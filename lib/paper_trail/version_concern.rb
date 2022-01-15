@@ -22,7 +22,7 @@ module PaperTrail
     end
 
     # :nodoc:
-    module ClassMethods
+    class_methods do
       def with_item_keys(item_type, item_id)
         where item_type: item_type, item_id: item_id
       end

@@ -32,6 +32,8 @@ module PaperTrail
         if defined_enums[attr] && val.is_a?(::String)
           # Because PT 4 used to save the string version of enums to `object_changes`
           val
+        elsif val.is_a?(ActiveRecord::Type::Time::Value)
+          val.instance_variable_get(:@time)
         else
           AttributeSerializerFactory.for(@klass, attr).deserialize(val)
         end

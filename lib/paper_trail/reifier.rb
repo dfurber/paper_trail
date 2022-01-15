@@ -60,7 +60,7 @@ module PaperTrail
         model = if options[:dup] == true || version.event == "destroy"
                   klass.new
                 else
-                  version.item || init_model_by_finding_item_id(klass, version) || klass.new
+                  init_model_by_finding_item_id(klass, version) || klass.new
                 end
 
         if options[:unversioned_attributes] == :nil && !model.new_record?
